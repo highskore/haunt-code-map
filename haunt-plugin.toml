@@ -1,0 +1,26 @@
+[plugin]
+id = "dev.haunt.code-map"
+name = "Code map"
+description = "A treemap of where your agents are editing a repo today"
+version = "0.1.0"
+api = "0.5"
+entry = "target/wasm32-wasip2/release/haunt_plugin.wasm"
+license = "MIT"
+
+[capabilities]
+# The edited file's path comes with `event_details`.
+event_details = true
+events = ["agent.file-edited"]
+# Files counted per folder; no file is read or listed by name.
+fs_list = true
+panel = true
+# The pane refreshes while open, and "today" follows the local time zone.
+timer = true
+
+[contributes]
+commands = [{ id = "show", title = "Code map" }]
+
+[settings]
+skip = { type = "list", default = ["node_modules", "target", "dist", "build", "vendor"], description = "Folder names left out of the map, besides hidden ones" }
+overlaps = { type = "bool", default = true, description = "Name folders two agents both edited today, under the map" }
+unverified = { type = "bool", default = false, description = "Also count edits from events without the tab's nonce, which anything in the terminal can forge" }
