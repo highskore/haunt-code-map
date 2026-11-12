@@ -1,6 +1,17 @@
+<div align="center">
+
+<img src="docs/icon.png" width="96" alt="">
+
 # Code map
 
-A treemap of where your agents are editing a repo today.
+**A treemap of where your agents are editing a repo today.**
+
+[![Haunt plugin](https://img.shields.io/badge/Haunt-plugin-D97757)](https://github.com/highskore/haunt-hackathon)
+![Plugin API 0.5](https://img.shields.io/badge/plugin%20API-0.5-111)
+![WASM component](https://img.shields.io/badge/WASM-component-654ff0?logo=webassembly&logoColor=white)
+![MIT licence](https://img.shields.io/badge/licence-MIT-6b7280)
+
+</div>
 
 Run **Code map** from the ⌘K palette and a pane opens beside the terminal for the repo your agents edited last. Each folder is a tile, two levels deep (`src/auth`, `web/ui`, `docs`). A tile's area is the number of files in it, so the map stays the same shape all day. Its shade is how much your agents edited it today: untouched folders stay dark and the busiest is lightest. Each tile names its folder, with `api, web · 41 edits` under it (beside it on a thin tile): the agents that edited it and how often. When the counts change, tiles ease to their new size. A folder two or more agents edited today gets an orange outline, and a line under the map says so: `▢ src/auth: api and web both editing`.
 
@@ -22,7 +33,7 @@ unverified = false  # also count edits from events without the tab's nonce
 | capability | why |
 |---|---|
 | `events = ["agent.file-edited"]` | each edit as it lands |
-| `event_details` | the edited file's path; haunt asks in red, since paths and commands can hold secrets |
+| `event_details` | the edited file's path; Haunt asks in red, since paths and commands can hold secrets |
 | `fs_list` | Haunt's file count per folder in the agent's repo; no file names or contents |
 | `panel` | the pane |
 | `timer` | refreshes while the pane is open, and finds your local midnight |
